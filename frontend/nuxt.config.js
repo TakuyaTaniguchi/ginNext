@@ -1,0 +1,3 @@
+buildModules: [
+  '@nuxt/typescript-build'
+]
