@@ -8,13 +8,10 @@ import (
 
 func main() {
 	engine := gin.Default()
-	// htmlのディレクトリを指定
-	engine.LoadHTMLGlob("templates/*")
 	engine.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			// htmlに渡す変数を定義
-			"message": "hello gin",
+		c.JSON(http.StatusOK, gin.H{
+			"message": "hello world",
 		})
 	})
-	engine.Run(":3000")
+	engine.Run(":4000")
 }
