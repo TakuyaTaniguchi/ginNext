@@ -29,3 +29,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 frontend/.next/build-manifest.json
+go.sum
+.env.development
+.env.production
