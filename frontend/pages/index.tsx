@@ -2,19 +2,22 @@ import Head from 'next/head'
 import Layout, {siteTitle} from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import {getSortedPostsData} from '../lib/posts'
+import Time from '../components/Time'
 
 import Link from 'next/link'
 
 import fetch from 'isomorphic-unfetch';
 
-export default function Home({allPostsData}) {
+export default function Home({allPostsData, data}) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
+        <p>[Your Self Introduction]{console.log(data.todos)}</p>
+
+        <Time ></Time>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -42,10 +45,10 @@ export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
   const res = await fetch('http://localhost:4000');
   const data = await res.json();
-
   return {
     props: {
-      allPostsData
+      allPostsData,
+      data,
     }
   }
 }
